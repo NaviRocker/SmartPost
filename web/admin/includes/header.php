@@ -23,7 +23,7 @@
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a>
-			<a href="#" class="profile">
+			<a href="?page=profile" class="profile">
 				<img src="./assets/img/<?php echo $admin_icon; ?>">
 			</a>
 		</nav>

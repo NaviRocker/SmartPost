@@ -1,6 +1,5 @@
 <?php require_once "controllers/controllerUserData.php"; ?>
 <?php require_once "controllers/mainDataController.php"; ?>
-
 <?php 
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];

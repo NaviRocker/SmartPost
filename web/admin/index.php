@@ -2,8 +2,13 @@
 <?php include('includes/head.php'); ?>
 <?php include('includes/sidebar.php'); ?>
 <?php include('includes/header.php'); ?>
+
 <?php
-  $page = $_GET['page']; // Get the page parameter from the URL
+  $page = ''; // Initialize the $page variable to a default value
+  
+  if (isset($_GET['page'])) {
+    $page = $_GET['page']; // Get the page parameter from the URL
+  }
   
   // Define the file path for the main content based on the page parameter
   $file = "./{$page}.php";
@@ -16,4 +21,4 @@
   }
 ?>
 
-    <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>
