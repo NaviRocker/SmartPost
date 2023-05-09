@@ -2,14 +2,14 @@
 <main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Post Office Management</h1>
+					<h1>Package Management</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="?page=home">Home</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Post Office Management</a>
+							<a class="active" href="#">Package Management</a>
 						</li>
 					</ul>
 				</div>
@@ -20,28 +20,28 @@
                 <i class='bx bxs-buildings'></i>
 					<span class="text">
 						<h3>1020</h3>
-						<p>Main Branches</p>
+						<p>Delivery Success Rate</p>
 					</span>
 				</li>
 				<li>
                 <i class='bx bxs-building-house'></i>
 					<span class="text">
 						<h3>2834</h3>
-						<p>Sub Branches</p>
+						<p>Lost/Damaged</p>
 					</span>
 				</li>
                 <li>
                 <i class='bx bxs-home'></i>
 					<span class="text">
 						<h3>2834</h3>
-						<p>Agencies</p>
+						<p>Delivery Locations</p>
 					</span>
 				</li>
 				<li>
                 <i class='bx bxs-tree'></i>
 					<span class="text">
 						<h3>2834</h3>
-						<p>Rural/Estate</p>
+						<p>Revenue Generated</p>
 					</span>
 				</li>
 			</ul>
@@ -50,7 +50,7 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Active Branches</h3>
+						<h3>Recent Packages</h3>
 					</div>
 					<table>
 						<thead>
@@ -97,7 +97,7 @@
 				</div>
 				<div class="todo">
 					<div class="head">
-						<h3>Add New Branch</h3>
+						<h3>Daily Statistics</h3>
 					</div>
 					<ul class="todo-list">
 						<li class="completed">
