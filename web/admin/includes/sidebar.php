@@ -25,10 +25,18 @@
 				</a>
 			</li>
 			<li class="" id="postoffice_management">
+                
+            <?php if(isset($user_type) && $user_type == 1): ?>
 				<a href="?page=postoffice_management">
                     <i class='bx bxs-buildings' ></i>
 					<span class="text">Post Office Management</span>
 				</a>
+                <?php else: ?>    
+                <a href="?page=our_postoffice">
+                <i class='bx bxs-buildings' ></i>
+				<span class="text">Our Post Office</span>
+				</a>
+                <?php endif; ?>
 			</li>
 			<li class="" id="user_management">
 				<a href="?page=user_management">

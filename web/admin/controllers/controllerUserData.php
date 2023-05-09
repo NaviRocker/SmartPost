@@ -83,24 +83,30 @@ $errors = array();
             $fetch = mysqli_fetch_assoc($res);
             $fetch_pass = $fetch['password'];
             if(password_verify($password, $fetch_pass)){
-                $_SESSION['email'] = $email;
-                $status = $fetch['status'];
-                if($status == 'verified'){
-                  $_SESSION['email'] = $email;
-                  $_SESSION['password'] = $password;
-                    header('location: ./index.php?page=home');
-                }else{
-                    $info = "It looks like you haven't verified your email - $email";
-                    $_SESSION['info'] = $info;
-                    header('location: ./user-otp.php');
+                $user_type = $fetch['type'];
+                if ($user_type == 1 || $user_type == 2 || $user_type == 3) {
+                    $status = $fetch['status'];
+                    if($status == 'verified'){
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['type'] = $user_type;
+                        header('location: ./index.php?page=home');
+                    }else{
+                        $info = "It looks like you haven't verified your email - $email";
+                        $_SESSION['info'] = $info;
+                        header('location: ./user-otp.php');
+                    }
+                } else {
+                    $errors['email'] = "You don't have the necessary permissions to log in.";
                 }
             }else{
                 $errors['email'] = "Incorrect email or password!";
             }
         }else{
-            $errors['email'] = "It looks like you're not yet a member! Click on the below link to signup.";
+            $errors['email'] = "It looks like you don't have an account.";
         }
     }
+    
 
     //if user click continue button in forgot password form
     if(isset($_POST['check-email'])){
