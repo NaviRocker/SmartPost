@@ -1,6 +1,8 @@
 <?php 
   // Start the session
-
+  if(isset($_SESSION['type'])) {
+    $user_type = $_SESSION['type'];
+  }
   // Check if the user is logged in
   if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
     // If the user is not logged in, redirect them to the login page
@@ -17,39 +19,50 @@
         <img src="./assets/img/logo.png" alt="SmartPost Logo" class="brand-img">
         <span class="text">SmartPost</span>
     </a>
-		<ul class="side-menu top">
+    <ul class="side-menu top">
 			<li class="" id="home">
 				<a href="?page=home">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li class="" id="postoffice_management">
-                
-            <?php if(isset($user_type) && $user_type == 1): ?>
-				<a href="?page=postoffice_management">
-                    <i class='bx bxs-buildings' ></i>
-					<span class="text">Post Office Management</span>
-				</a>
-                <?php else: ?>    
-                <a href="?page=our_postoffice">
+    <?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+        
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        
+    <?php elseif ($_SESSION['type'] == 3): ?>
+        MEM
+    <?php endif; ?>
+<?php endif; ?>
+
+        <li class="" id="postoffice_management">
+			<a href="?page=postoffice_management">
                 <i class='bx bxs-buildings' ></i>
-				<span class="text">Our Post Office</span>
-				</a>
-                <?php endif; ?>
-			</li>
-			<li class="" id="user_management">
+				<span class="text">Post Office Management</span>
+			</a>
+        </li>   
+        <li class="" id="user_management">
 				<a href="?page=user_management">
                     <i class='bx bxs-user-detail' ></i>
 					<span class="text">User Management</span>
 				</a>
 			</li>
+            
 			<li class="" id="packages">
 				<a href="?page=packages">
                     <i class='bx bxs-package' ></i>
 					<span class="text">Packages</span>
 				</a>
+			</li> 
+        
+            <li class="" id="add_packages">
+				<a href="?page=add_packages">
+                    <i class='bx bxs-package' ></i>
+					<span class="text">Add a Packages</span>
+				</a>
 			</li>
+            
             <li class="" id="track">
 				<a href="?page=track">
                 <i class='bx bx-qr-scan' ></i>

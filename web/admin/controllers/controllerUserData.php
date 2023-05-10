@@ -86,10 +86,10 @@ $errors = array();
                 $user_type = $fetch['type'];
                 if ($user_type == 1 || $user_type == 2 || $user_type == 3) {
                     $status = $fetch['status'];
-                    if($status == 'verified'){
+                    if ($status == 'verified') {
                         $_SESSION['email'] = $email;
                         $_SESSION['password'] = $password;
-                        $_SESSION['type'] = $user_type;
+                        $_SESSION['type'] = $user_type; // set the user type here
                         header('location: ./index.php?page=home');
                     }else{
                         $info = "It looks like you haven't verified your email - $email";

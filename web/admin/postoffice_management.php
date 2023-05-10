@@ -1,5 +1,7 @@
 <?php include('controllers/retrieveController.php'); ?>
 <?php include('controllers/adminAuthController.php'); ?>
+<?php include('controllers/uploadController.php'); ?>
+
 <main>
 			<div class="head-title">
 				<div class="left">
@@ -84,28 +86,67 @@ while ($row = mysqli_fetch_assoc($retrievePostOffice)):
       <div class="head">
         <h3>Add New Branch</h3>
       </div>
-      <ul class="todo-list">
-        <li class="completed">
-          <p>Todo List</p>
-          <i class='bx bx-dots-vertical-rounded' ></i>
-        </li>
-        <li class="completed">
-          <p>Todo List</p>
-          <i class='bx bx-dots-vertical-rounded' ></i>
-        </li>
-        <li class="not-completed">
-          <p>Todo List</p>
-          <i class='bx bx-dots-vertical-rounded' ></i>
-        </li>
-        <li class="completed">
-          <p>Todo List</p>
-          <i class='bx bx-dots-vertical-rounded' ></i>
-        </li>
-        <li class="not-completed">
-          <p>Todo List</p>
-          <i class='bx bx-dots-vertical-rounded' ></i>
-        </li>
-      </ul>
+      <div class="wrapper">
+	  <form method="post" id="add-branch-form">
+  <div class="form">
+    <div class="inputfield">
+      <label>Branch Shortcode</label>
+      <input type="text" class="input" name="branch_shortcode" id="branch_shortcode" required>
+    </div>  
+    <div class="inputfield">
+      <label>Branch Name</label>
+      <input type="text" class="input" name="branch_name" id="branch_name" required>
+    </div>  
+    <div class="inputfield">
+      <label>Street</label>
+      <input type="text" class="input" name="street" id="street" required>
+    </div>  
+    <div class="inputfield">
+      <label>City</label>
+      <input type="text" class="input" name="city" id="city" required>
+    </div>  
+    <div class="inputfield">
+      <label>District</label>
+      <div class="custom_select">
+        <select name="district" id="district" required>
+          <option value="Kandy">Kandy</option>
+          <option value="Colombo">Colombo</option>
+          <option value="Matale">Matale</option>
+          <option value="Kalutara">Kalutara</option>
+          <option value="Gampaha">Gampaha</option>
+          <option value="Kegalle">Kegalle</option>
+          <option value="Kurunegala">Kurunegala</option>
+        </select>
+      </div>
+    </div> 
+    <div class="inputfield">
+      <label>Postal Code</label>
+      <input type="text" class="input" name="zip_code" id="zip_code" required>
+    </div> 
+    <div class="inputfield">
+      <label>Contact Number</label>
+      <input type="text" class="input" name="contact" id="contact" required>
+    </div> 
+    <div class="inputfield">
+      <label>Post Office Type</label>
+      <div class="custom_select">
+        <select name="type" id="type" required>
+          <option value="1">Main Post Office</option>
+          <option value="2">Sub Post Office</option>
+          <option value="3">Agency Post Office</option>
+          <option value="4">Rural Post Office</option>
+          <option value="5">Estate Post Office</option>
+        </select>
+      </div>
+    </div>   
+    <div class="inputfield">
+      <input type="submit" value="Add New Branch" class="btn" name="add_postoffice">
+    </div>
+  </div>
+</form>
+
+
+	</div>
     </div>
   </div>
   
@@ -177,3 +218,4 @@ while ($row = mysqli_fetch_assoc($retrievePostOffice)):
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+	
