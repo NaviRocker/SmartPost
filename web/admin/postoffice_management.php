@@ -210,6 +210,64 @@ while ($row = mysqli_fetch_assoc($retrievePostOffice)):
 						</tbody>
 					</table>
 				</div>
+				<div class="todo">
+      <div class="head">
+        <h3>Add New Agency</h3>
+      </div>
+      <div class="wrapper">
+	  <form method="post" id="add-agency">
+  <div class="form">
+    <div class="inputfield">
+      <label>Agency Shortcode</label>
+      <input type="text" class="input" name="agency_shortcode" id="agency_shortcode" required>
+    </div>  
+    <div class="inputfield">
+      <label>Agency Name</label>
+      <input type="text" class="input" name="agency_name" id="agency_name" required>
+    </div>  
+    <div class="inputfield">
+      <label>Street</label>
+      <input type="text" class="input" name="street" id="street" required>
+    </div>  
+    <div class="inputfield">
+      <label>City</label>
+      <input type="text" class="input" name="city" id="city" required>
+    </div>  
+    <div class="inputfield">
+      <label>Nearest Post Office</label>
+      <div class="custom_select">
+        <select name="nearest_postoffice" id="nearest_postoffice" required>
+          <?php
+						// Check if any branches were found
+if (mysqli_num_rows($postOfficeDropdown) > 0) {
+    // Generate the options for the select drop-down
+    while ($row = mysqli_fetch_assoc($postOfficeDropdown)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['branch_name'] . "</option>";
+    }
+} else {
+    echo "<option value=''>No branches found</option>";
+}
+						?>
+        </select>
+      </div>
+    </div> 
+    <div class="inputfield">
+      <label>Postal Code</label>
+      <input type="text" class="input" name="zip_code" id="zip_code" required>
+    </div> 
+    <div class="inputfield">
+      <label>Contact Number</label>
+      <input type="text" class="input" name="contact" id="contact" required>
+    </div>  
+    <div class="inputfield">
+      <input type="submit" value="Add New Agency" class="btn" name="add_agency">
+    </div>
+  </div>
+</form>
+
+
+	</div>
+    </div>
 				
 			</div>
 

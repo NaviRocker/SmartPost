@@ -12,5 +12,11 @@
   $MiddleAgentCount = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) as count FROM admin WHERE type = 5"));
   $retrieveEmployee = mysqli_query($con, 'SELECT admin.fname, admin.lname, admin.type, PostOffice.branch_name FROM admin LEFT JOIN PostOffice ON admin.branch_id = PostOffice.id WHERE admin.status = "verified" ORDER BY admin.id DESC LIMIT 5');
 
+  $retrieveAvailablePostOffice = mysqli_query($con, 'SELECT id, branch_name FROM postoffice WHERE id NOT IN (SELECT branch_id FROM admin)');
 
+?>
+
+<?php
+// Execute SELECT query to fetch branches from the database
+$postOfficeDropdown = mysqli_query($con, "SELECT id, branch_name FROM postoffice WHERE status = '1'");
 ?>

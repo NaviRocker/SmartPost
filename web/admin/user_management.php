@@ -1,5 +1,6 @@
 <!-- MAIN -->
 <?php include('controllers/retrieveController.php'); ?>
+<?php include('controllers/uploadController.php'); ?>
 <main>
 			<div class="head-title">
 				<div class="left">
@@ -105,56 +106,75 @@ endwhile;
 				</div>
 				<div class="todo">
 					<div class="head">
-						<h3>Add New User</h3>
+						<h3>Add New Post Master</h3>
 					</div>
 					<div class="wrapper">
-    	<div class="form">
-			<div class="inputfield">
-				<label>First Name</label>
-				<input type="text" class="input">
-			</div>  
-				<div class="inputfield">
-				<label>Last Name</label>
-				<input type="text" class="input">
-			</div>  
-			<div class="inputfield">
-				<label>Password</label>
-				<input type="password" class="input">
-			</div>  
-			<div class="inputfield">
-				<label>Confirm Password</label>
-				<input type="password" class="input">
-			</div> 
-				<div class="inputfield">
-				<label>Gender</label>
-				<div class="custom_select">
-					<select>
-					<option value="">Select</option>
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-					</select>
-				</div>
-			</div> 
-			<div class="inputfield">
-			<label>Email Address</label>
-			<input type="text" class="input">
-			</div> 
-			<div class="inputfield">
-				<label>Phone Number</label>
-				<input type="text" class="input">
-			</div> 
-			<div class="inputfield">
-				<label>Address</label>
-				<textarea class="textarea"></textarea>
-			</div> 
-			<div class="inputfield">
-				<label>Postal Code</label>
-				<input type="text" class="input">
-			</div>  
-			<div class="inputfield">
-				<input type="submit" value="Register" class="btn">
-			</div>
-    	</div>
+					<form method="post" id="add-adminuser">
+  <div class="form">
+    <div class="inputfield">
+      <label>First Name</label>
+      <input type="text" class="input" name="fname" id="fname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Last Name</label>
+      <input type="text" class="input" name="lname" id="lname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Email</label>
+      <input type="email" class="input" name="email" id="email" required>
+    </div>  
+    <div class="inputfield">
+      <label>Password</label>
+      <input type="password" class="input" name="password" id="password" required>
+    </div> 
+	<div class="inputfield">
+      <label>Confirm Password</label>
+      <input type="password" class="input" name="confirm_password" id="confirm_password" required>
+    </div>  
+    <div class="inputfield">
+      <label>Post Office</label>
+      <div class="custom_select">
+        <select name="branch_id" id="branch_id" required>
+		<option value="" disabled selected>Please Select a Branch</option>
+          <?php
+						// Check if any branches were found
+if (mysqli_num_rows($retrieveAvailablePostOffice) > 0) {
+    // Generate the options for the select drop-down
+    while ($row = mysqli_fetch_assoc($retrieveAvailablePostOffice)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['branch_name'] . "</option>";
+    }
+} else {
+    echo "<option value=''>No branches found</option>";
+}
+						?>
+        </select>
+      </div>
+    </div>  
+    <div class="inputfield">
+      <input type="submit" value="Add New User" class="btn" name="add_adminuser">
+    </div>
+  </div>
+</form>
+
+<script>
+  document.getElementById("add-adminuser").addEventListener("submit", function(e) {
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+
+    if (password !== confirm_password) {
+		Swal.fire({
+		position: 'top-end',
+        icon: 'error',
+        text: 'Password and Confirm Password do not match.',
+        showConfirmButton: false,
+		timer: 1500
+
+      }); // Prevent form submission
+      e.preventDefault();
+	  
+    }
+  });
+</script>
 				</div>
 			</div>
 		</main>
