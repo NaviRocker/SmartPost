@@ -157,18 +157,29 @@ if ($result_current && mysqli_num_rows($result_current) > 0) {
         if ($result_query) {
             // Display SweetAlert success message
             echo "<script>
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                text: 'Package Updated Successfully!',
-                showConfirmButton: false,
-                timer: 1500
-                
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    text: 'Package Updated Successfully!',
+                    showConfirmButton: false,
+                    timer: 1500
                 }).then(function() {
-                    window.location.replace('success.php'); // Replace with the desired URL
+
+                
+        var lol = 'success.php';
+        window.location.href = lol;
+
+                    // Redirect to success.php with the unique code
+                    var uniqueCode = '$uniqueCode';
+        var url = 'generatePrint.php?code=' + encodeURIComponent(uniqueCode);
+        window.open(url, '_blank');
+
+
+                    
                 });
             </script>";
-        } else {
+        }
+         else {
             // Handle error
             echo 'There was an error inserting the data into the database.';
         }
