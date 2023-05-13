@@ -890,4 +890,69 @@ ol ol{
 
 
 
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+	height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  .row {
+	display: flex;
+	flex-wrap: wrap;
+}
 
+.row > * {
+	flex: 0 0 100%; /* Ensure each item takes up a full row width */
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* CSS for Search Bar */
+.search {
+	width: 100%;
+	display: flex;
+}
+
+.searchTerm {
+	width: 100%;
+	border: 3px solid #EE1C25;
+	border-right: none;
+	padding: 5px;
+	height: 45px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	color: #000000;
+	font-size: 18px;
+}
+
+.searchTerm:focus {
+	color: #000000;
+}
+
+.searchButton {
+	width: 40px;
+	height: 45px;
+	border: 1px solid #EE1C25;
+	background: #EE1C25;
+	text-align: ;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+/* Resize the wrap to see the search bar change! */
+.wrap {
+	width: 100%;
+	max-width: 400px; /* Adjust the max-width to control the width of the search bar */
+	margin: 0 auto;
+}
+  

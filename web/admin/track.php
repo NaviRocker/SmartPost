@@ -17,24 +17,26 @@
 	</div>
 
 	<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Search for Tracking ID</h3>
-						
+	<div class="order">
+		<div class="head">
+			<h3>Search for Tracking ID</h3>
+		</div>
+		<div class="row">
+			<form action="#" method="POST">
+				<div class="wrap">
+					<div class="search">
+						<input type="text" class="searchTerm" placeholder="What are you looking for?">
+						<button type="submit" class="searchButton">
+							<i class='bx bx-search-alt'></i>
+						</button>
 					</div>
-  
-  <nav>
-  <form action="#" method="POST">
-    <div class="form-input">
-        <input type="search" name="tracking_number" placeholder="Search...">
-        <button type="submit" name="search" class="search-btn"><i class='bx bx-search'></i></button>
-    </div>
-</form>
-
-</nav>
 				</div>
-				
-			</div>
+			</form>
+		</div>
+	</div>		
+</div>
+
+
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
