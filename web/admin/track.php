@@ -17,26 +17,45 @@
 	</div>
 
 	<div class="table-data">
-	<div class="order">
-		<div class="head">
-			<h3>Search for Tracking ID</h3>
-		</div>
-		<div class="row">
-			<form action="#" method="POST">
-				<div class="wrap">
+				<div class="order">
+					<div class="head">
+						
+						<h3>Search for Tracking ID</h3>
+						<br>
+					</div>
+					<div class="row">
+				<form action="#" method="POST">
+				<div style = "width: 80%;">
 					<div class="search">
-						<input type="text" class="searchTerm" placeholder="What are you looking for?">
-						<button type="submit" class="searchButton">
+						<input type="text" name = "tracking_number" class="searchTerm" placeholder="Enter Tracking ID">
+						<button type="submit" name = "search" class="searchButton">
 							<i class='bx bx-search-alt'></i>
 						</button>
 					</div>
 				</div>
 			</form>
 		</div>
-	</div>		
-</div>
+  
 
+				</div>
+<?php if (isset($_POST['search'])) { 
+    $trackingNumber = $_POST['tracking_number'];
+	echo '
+				<div class="order">
+					<div class="head">
+						
+						<h3>Tracking Number: </h3>
+						
+					</div>
+					<div class="row">
+				
+				<h3> '. $trackingNumber.' </h3>
+		</div>
+  
 
+				</div>';}
+				?>
+			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">

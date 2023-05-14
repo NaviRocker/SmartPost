@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SmartPost-Mobile"
 include ':app'
+
+include ':zxing'

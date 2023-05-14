@@ -261,11 +261,11 @@ if (mysqli_num_rows($postOfficeDropdown) > 0) {
     </div>
 	<div class="inputfield">
       <label>Email Address</label>
-      <input type="email" class="input" name="contact" id="email" required>
+      <input type="email" class="input" name="email" id="email" required>
     </div>
 	<div class="inputfield">
       <label>Agency Password</label>
-      <input type="password" class="input" name="contact" id="password" required>
+      <input type="password" class="input" name="password" id="password" required>
     </div>  
     <div class="inputfield">
       <input type="submit" value="Add New Agency" class="btn" name="add_agency">

@@ -138,7 +138,7 @@ if(isset($_POST['add_agency'])){
     $contact = $_POST['contact'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $encpass = password_hash($password, PASSWORD_BCRYPT);
+    $encpass = md5($password);
 
 
         //insert query
