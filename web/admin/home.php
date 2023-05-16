@@ -20,6 +20,7 @@ if($email != false && $password != false){
     header('Location: login-user.php');
 }
 ?>
+<?php include('controllers/retrieveController.php'); ?>
 <!-- MAIN -->
 <main>
 			<div class="head-title">
@@ -33,124 +34,173 @@ if($email != false && $password != false){
 						<li>
 							<a class="active" href="#">Home</a>
 						</li>
+</h3>
 					</ul>
 				</div>
-				<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a>
 			</div>
+			<?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+		
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        
+		<h2>You are here to Manage <?php echo $branchName; ?></h2>
+              
+			
+    <?php endif; ?>
+<?php endif; ?>
+			
+
 
 			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
+			<?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+		<li>
+				<i class='bx bxs-buildings'></i>
 					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
+						<h3><?php echo $postofficeCount ?> / 4738</h3>
+						<p>Post Offices</p>
 					</span>
 				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        
+		<li>
+				<i class='bx bxs-buildings'></i>
 					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
+						<h3><?php echo $rowCountEmp ?></h3>
+						<p>Branch Employees</p>
 					</span>
 				</li>
+               
+			
+    <?php endif; ?>
+<?php endif; ?>
+				
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+				<i class='bx bxs-building-house'></i>
 					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
+						<h3><?php echo $agencyCount ?></h3>
+						<p>Agencies</p>
 					</span>
 				</li>
+				<?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+		<li>
+				<i class='bx bxs-book-add' ></i>
+					<span class="text">
+						<h3>12</h3>
+						<p>Complains</p>
+					</span>
+				</li>
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        <li>
+				<i class='bx bxs-book-add' ></i>
+					<span class="text">
+						<h3>02</h3>
+						<p>Branch Complains</p>
+					</span>
+				</li>
+			
+    
+    <?php endif; ?>
+<?php endif; ?>
+				
 			</ul>
 
 
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
+					
+						<h3>Newly Added Post Master</h3>
+					
 					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+						<tbody>
+							<tr><?php
+							if ($adminResult && mysqli_num_rows($adminResult) > 0) {
+    // Fetch the row data
+    $adminRow = mysqli_fetch_assoc($adminResult);
+
+    
+    
+    // Print the data of the last entry
+    echo '<td><p>' . $adminRow['fname'] . ' ' . $adminRow['lname'] . '</p></td>
+<td><p>' . $adminRow['branch_name'] . '</p></td>';
+
+
+} ?>
+								<td><span class="status completed">View</span></td>
 							</tr>
-						</thead>
+						</tbody>
+						
+					</table>
+					<br>
+						<h3>Newly Added Post Office</h3>
+					
+					<table>
+						<tbody>
+							<tr><?php
+							if ($postofficeResult && mysqli_num_rows($postofficeResult) > 0) {
+    // Fetch the row data
+    $postofficeRow = mysqli_fetch_assoc($postofficeResult);
+
+    
+    
+    // Print the data of the last entry
+    echo '<td><p>' . $postofficeRow['branch_shortcode'] . ' - ' . $postofficeRow['branch_name'] . '</p></td>
+<td><p>' . $postofficeRow['zip_code'] . '</p></td>
+<td><p>' . $postofficeRow['contact'] . '</p></td>';
+
+
+} ?>
+								
+								
+								<td><span class="status completed">View</span></td>
+							</tr>
+						</tbody>
+						
+					</table>
+					<br>
+						<h3>Newly Added Middle Agency</h3>
+					
+					<table>
 						<tbody>
 							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+								<?php
+							if ($agencyResult && mysqli_num_rows($agencyResult) > 0) {
+    // Fetch the row data
+    $agencyRow = mysqli_fetch_assoc($agencyResult);
+
+    
+    
+    // Print the data of the last entry
+    echo '<td><p>' . $agencyRow['agency_shortcode'] . ' - ' . $agencyRow['agency_name'] . '</p></td>
+<td><p>' . $agencyRow['zip_code'] . '</p></td>
+<td><p>' . $agencyRow['contact'] . '</p></td>';
+
+
+} ?>
+								<td><label class="status completed btnn" for="modal-1">View</label></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
+					
+						<h3>Statistics (<?php echo $currentDate ?>)</h3>
+						<br>
+						
+					
 					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Regular Mail: <?php echo $count_regular ?></p>
 						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Speed Post: <?php echo $count_speed ?></p>
 						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Registered Post: <?php echo $count_register ?></p>
 						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Logi Post: <?php echo $count_logi ?></p>
 						</li>
 					</ul>
 				</div>
@@ -159,3 +209,13 @@ if($email != false && $password != false){
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+
+	<input class="modal-state" id="modal-1" type="checkbox" />
+<div class="modal">
+  <label class="modal__bg" for="modal-1"></label>
+  <div class="modal__inner">
+    <label class="modal__close" for="modal-1"></label>
+    <h2>Caaaats FTW!</h2>
+    Aliquam in sagittis nulla. Curabitur euismod diam eget risus venenatis, sed dictum lectus bibendum. Nunc nunc nisi, hendrerit eget nisi id, rhoncus rutrum velit. Nunc vel mauris dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam fringilla quis nisi eget imperdiet.</p>
+  </div>
+</div>

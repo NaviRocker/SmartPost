@@ -47,7 +47,10 @@
 					</span>
 				</li>
 			</ul>
-
+      <?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+		
+   
 
 			<div class="table-data">
 				<div class="order">
@@ -78,7 +81,7 @@ while ($row = mysqli_fetch_assoc($retrieveEmployee)):
           echo 'Post Master';
         } elseif ($row['type'] == 3) {
           echo 'Postal Staff';
-        } elseif ($row['type'] == 5) {
+        } elseif ($row['type'] == 4) {
           echo 'Post Man';
         } else {
           echo 'Unknown Role';
@@ -177,6 +180,126 @@ if (mysqli_num_rows($retrieveAvailablePostOffice) > 0) {
 </script>
 				</div>
 			</div>
+
+      <?php elseif ($_SESSION['type'] == 2): ?>
+        
+			
+        <div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Add New Postal Staff</h3>
+					</div>
+          <div class="wrapper">
+					<form method="post" id="addstaff">
+  <div class="form">
+    <div class="inputfield">
+      <label>First Name</label>
+      <input type="text" class="input" name="fname" id="fname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Last Name</label>
+      <input type="text" class="input" name="lname" id="lname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Email</label>
+      <input type="email" class="input" name="email" id="email" required>
+    </div>  
+    <div class="inputfield">
+      <label>Password</label>
+      <input type="password" class="input" name="password" id="password" required>
+    </div> 
+	<div class="inputfield">
+      <label>Confirm Password</label>
+      <input type="password" class="input" name="confirm_password" id="confirm_password" required>
+    </div>  
+    
+    <div class="inputfield">
+      <input type="submit" value="Add New User" class="btn" name="add_staff">
+    </div>
+  </div>
+</form>
+
+<script>
+  document.getElementById("add-staff").addEventListener("submit", function(e) {
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+
+    if (password !== confirm_password) {
+		Swal.fire({
+		position: 'top-end',
+        icon: 'error',
+        text: 'Password and Confirm Password do not match.',
+        showConfirmButton: false,
+		timer: 1500
+
+      }); // Prevent form submission
+      e.preventDefault();
+	  
+    }
+  });
+</script>
+				</div>
+					
+				</div>
+				<div class="order">
+        <div class="head">
+						<h3>Add New Postman</h3>
+					</div>
+
+          <div class="wrapper">
+					<form method="post" id="add-postman">
+  <div class="form">
+    <div class="inputfield">
+      <label>First Name</label>
+      <input type="text" class="input" name="fname" id="fname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Last Name</label>
+      <input type="text" class="input" name="lname" id="lname" required>
+    </div>  
+    <div class="inputfield">
+      <label>Email</label>
+      <input type="email" class="input" name="email" id="email" required>
+    </div>  
+    <div class="inputfield">
+      <label>Password</label>
+      <input type="password" class="input" name="password" id="password" required>
+    </div> 
+	<div class="inputfield">
+      <label>Confirm Password</label>
+      <input type="password" class="input" name="confirm_password" id="confirm_password" required>
+    </div>  
+    <div class="inputfield">
+      <input type="submit" value="Add New User" class="btn" name="add_postman">
+    </div>
+  </div>
+</form>
+
+<script>
+  document.getElementById("add-postman").addEventListener("submit", function(e) {
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+
+    if (password !== confirm_password) {
+		Swal.fire({
+		position: 'top-end',
+        icon: 'error',
+        text: 'Password and Confirm Password do not match.',
+        showConfirmButton: false,
+		timer: 1500
+
+      }); // Prevent form submission
+      e.preventDefault();
+	  
+    }
+  });
+</script>
+				</div>
+				</div>
+			</div>           
+          
+        <?php endif; ?>
+    <?php endif; ?>
 		</main>
 		<!-- MAIN -->
 	</section>

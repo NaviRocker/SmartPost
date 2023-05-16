@@ -1,4 +1,6 @@
 <!-- MAIN -->
+<?php include('controllers/adminAuthController.php'); ?>
+<?php include('controllers/retrieveController.php'); ?>
 <main>
 			<div class="head-title">
 				<div class="left">
@@ -15,110 +17,54 @@
 				</div>
 			</div>
 
-			<ul class="box-info">
-				<li>
-                <i class='bx bxs-buildings'></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>Delivery Success Rate</p>
-					</span>
-				</li>
-				<li>
-                <i class='bx bxs-building-house'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Lost/Damaged</p>
-					</span>
-				</li>
-                <li>
-                <i class='bx bxs-home'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Delivery Locations</p>
-					</span>
-				</li>
-				<li>
-                <i class='bx bxs-tree'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Revenue Generated</p>
-					</span>
-				</li>
-			</ul>
-
-
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>Recent Packages</h3>
 					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Branch</th>
-                                <th>ZIP Code</th>
-								<th>Contact Number</th>
-                                <th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<p>KAN1</p>
-									<p>Kandy Main</p>
-								</td>
-								<td>20000</td>
-                                <td>0812224081</td>
-                                
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-                            <td>
-									<p>KAN1</p>
-									<p>Kandy Main</p>
-								</td>
-								<td>20000</td>
-                                <td>0812224081</td>
-                                
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-                            <td>
-									<p>KAN1</p>
-									<p>Kandy Main</p>
-								</td>
-								<td>20000</td>
-                                <td>0812224081</td>
-                                
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table>
+					<?php
+if ($packages_result && $packages_result->num_rows > 0) {
+  echo '<table>';
+  echo '<tr><th>Tracking No.</th><th>From</th><th>Payment Method</th><th>Receiver</th></tr>';
+
+  while ($row = $packages_result->fetch_assoc()) {
+    echo '<tr>';
+    echo '<td>' . $row['tracking_number'] . '</td>';
+    echo '<td>' . $row['sender_name'] . '</td>';
+    echo '<td>';
+    if ($row['payment_method'] == 1) {
+      echo 'Card';
+    } elseif ($row['payment_method'] == 2) {
+      echo 'Cash';
+    }
+    echo '</td>';
+    echo '<td>' . $row['recipient_name'] . '</td>';
+    echo '</tr>';
+  }
+
+  echo '</table>';
+}
+?>
+
 				</div>
 				<div class="todo">
-					<div class="head">
-						<h3>Daily Statistics</h3>
-					</div>
+					
+						<h3>Statistics (<?php echo $currentDate ?>)</h3>
+						<br>
+						
+					
 					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Regular Mail: <?php echo $count_regular ?></p>
 						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Speed Post: <?php echo $count_speed ?></p>
 						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Registered Post: <?php echo $count_register ?></p>
 						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li class="">
+							<p>Logi Post: <?php echo $count_logi ?></p>
 						</li>
 					</ul>
 				</div>

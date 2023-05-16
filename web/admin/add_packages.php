@@ -15,10 +15,7 @@
                 </li>
             </ul>
         </div>
-        <a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download Previous Receipt</span>
-				</a>
+        
     </div>
 
     <div class="table-data">
@@ -81,10 +78,10 @@
             <option value="" disabled selected>Please Select a Branch</option>
           <?php
 						// Check if any branches were found
-if (mysqli_num_rows($retrievePostOffice) > 0) {
+if (mysqli_num_rows($retrievePostOfficeLOL) > 0) {
     // Generate the options for the select drop-down
-    while ($row = mysqli_fetch_assoc($retrievePostOffice)) {
-        echo "<option value='" . $row['id'] . "'>" . $row['zip_code'] . " - " . $row['branch_name'] . "</option>";
+    while ($row = mysqli_fetch_assoc($retrievePostOfficeLOL)) {
+        echo "<option value='" . $row['branch_shortcode'] . "'>" . $row['zip_code'] . " - " . $row['branch_name'] . "</option>";
     }
 } else {
     echo "<option value=''>No Branches Found</option>";

@@ -12,16 +12,13 @@
 
 			<form action="#">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+					<input type="hidden" placeholder="Search...">
+					
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
+			
 			<a href="?page=profile" class="profile">
 				<img src="./assets/img/<?php echo $admin_icon; ?>">
 			</a>

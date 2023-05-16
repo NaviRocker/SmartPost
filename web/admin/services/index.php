@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once('access_controller.php');
+// Rest of your PHP code goes here
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +27,7 @@
 
 <div class="boxes">
   <div class="box mobile">
-    <a href="mobile/customer/index.php">
+    <a href="<?php echo BASE_PATH; ?>mobile_payments.php">
       <div class="box-content">
         <img class="box-image" src="./assets/Mobile1.png">
         <div class="box-footer">MOBILE BILL PAYMENTS</div>
@@ -30,7 +35,7 @@
     </a>
   </div>
   <div class="box utility">
-    <a href="utility/customer/index.php">
+    <a href="<?php echo BASE_PATH; ?>utility_payments.php">
       <div class="box-content">
         <img class="box-image" src="./assets/Utility1.png">
         <div class="box-footer">UTILITY BILL PAYMENTS</div>
@@ -38,7 +43,7 @@
     </a>
   </div>
   <div class="box vehiclefine">
-    <a href="vehiclefine/customer/index.php">
+    <a href="<?php echo BASE_PATH; ?>vehicle_fine.php">
       <div class="box-content">
         <img class="box-image" src="./assets/Fine.png">
         <div class="box-footer">VEHICLE FINES PAYMENTS</div>
@@ -46,7 +51,7 @@
     </a>
   </div>
   <div class="box examfees">
-    <a href="examfees/customer/index.php">
+    <a href="<?php echo BASE_PATH; ?>exam_fees.php">
       <div class="box-content">
         <img class="box-image" src="./assets/Exam.png">
         <div class="box-footer">EXAM FEES PAYMENTS</div>
@@ -54,7 +59,7 @@
     </a>
   </div>
   <div class="box tax">
-    <a href="tax/index.php">
+    <a href="<?php echo BASE_PATH; ?>tax.php">
       <div class="box-content">
         <img class="box-image" src="./assets/Tax1.png">
         <div class="box-footer">TAX CALCULATOR</div>
@@ -62,7 +67,7 @@
     </a>
   </div>
   <div class="box EPF">
-    <a href="EPF/index.php">
+    <a href="<?php echo BASE_PATH; ?>epf_calculator.php">
       <div class="box-content">
         <img class="box-image" src="./assets/ETF.png">
         <div class="box-footer">EPF/ETF CALCULATOR</div>

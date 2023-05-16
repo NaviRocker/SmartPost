@@ -17,7 +17,7 @@
 
 			
 			<ul class="box-info">
-			<a href="?page=services/mobile/index">
+			<a href="services/mobile_payments.php" target="_blank">
 				<li>
 					<i class='bx bx-mobile'></i>
 					<span class="text">
@@ -25,14 +25,14 @@
 					</span>
 				</li></a>
 
-				<a href="?page=user_management">
+				<a href="services/utility_payments.php" target="_blank">
 				<li>
 				<i class='bx bxs-home'></i>
 					<span class="text">
 						<h3>Utility Bill Payment</h3>
 					</span>
 				</li></a>
-				<a href="?page=user_management">
+				<a href="services/vehicle_fine.php" target="_blank">
 				<li>
 				<i class='bx bxs-car-wash'></i>
 					<span class="text">
@@ -41,21 +41,21 @@
 				</li></a>
 			</ul>
 			<ul class="box-info">
-			<a href="?page=user_management">
+			<a href="services/exam_fees.php" target="_blank">
 				<li>
 				<i class='bx bxs-copy-alt'></i>
 					<span class="text">
 						<h3>Exam Fee Payment</h3>
 					</span>
 				</li></a>
-				<a href="?page=user_management">
+				<a href="services/tax.php" target="_blank">
 				<li>
 				<i class='bx bxs-calculator' ></i>
 					<span class="text">
 						<h3>Tax Calculator</h3>
 					</span>
 				</li></a>
-				<a href="?page=user_management">
+				<a href="services/epf_calculator.php" target="_blank">
 				<li>
 				<i class='bx bx-money'></i>
 					<span class="text">

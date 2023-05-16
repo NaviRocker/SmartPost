@@ -8,7 +8,11 @@ date_default_timezone_set('Asia/Colombo');
 
 
 $data = null; // initialize $data variable
-$sql = "SELECT transactions.id, transactions.customer_id, transactions.product, customers.amount, transactions.created_at, transactions.status, customers.name FROM customers INNER JOIN transactions ON customers.id = transactions.customer_id";
+$sql = "SELECT t.id, t.product, t.status, t.created_at, c.amount, c.fname
+FROM online_mobiletrans AS t
+INNER JOIN online_mobilecus AS c ON DATE(t.created_at) = DATE(c.created_at)
+WHERE t.created_at = (SELECT MAX(created_at) FROM online_mobiletrans)
+";
 $data = mysqli_query($con,$sql);
 
 if(isset($_POST['btn_pdf'])){
@@ -61,7 +65,11 @@ if(isset($_POST['btn_pdf'])){
             }
         }
         
-        $sql = "SELECT transactions.id, transactions.customer_id, transactions.product, customers.amount, transactions.created_at, transactions.status, customers.name FROM customers INNER JOIN transactions ON customers.id = transactions.customer_id WHERE transactions.id='ch_3Mve7AD6qbEya7gH1DOJYQ0P'";
+        $sql = "SELECT t.id, t.product, t.status, t.created_at, c.amount, c.fname
+        FROM online_mobiletrans AS t
+        INNER JOIN online_mobilecus AS c ON DATE(t.created_at) = DATE(c.created_at)
+        WHERE t.created_at = (SELECT MAX(created_at) FROM online_mobiletrans)
+        ";
         $data = mysqli_query($con,$sql);
         
         if(isset($_POST['btn_pdf'])){

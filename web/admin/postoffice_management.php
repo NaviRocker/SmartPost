@@ -18,8 +18,11 @@
 				</div>
 			</div>
 
-			<ul class="box-info">
-				<li>
+			
+      <?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+      <ul class="box-info">
+      <li>
                 <i class='bx bxs-buildings'></i>
 					<span class="text">
 						<h3><?php echo $mainPostOfficeCount['count']; ?></h3>
@@ -37,7 +40,7 @@
                 <i class='bx bxs-home'></i>
 					<span class="text">
 						<h3><?php echo $agencyPostOfficeCount['count']; ?></h3>
-						<p>Agencies</p>
+						<p>Postal Agencies</p>
 					</span>
 				</li>
 				<li>
@@ -47,10 +50,48 @@
 						<p>Rural/Estate</p>
 					</span>
 				</li>
-			</ul>
+    </ul>
+    <?php elseif ($_SESSION['type'] == 2): ?>
+      <ul class="box-info">
+      <li>
+                <i class='bx bxs-buildings'></i>
+					<span class="text">
+						<h3><?php echo $mainPostOfficeCount['count']; ?></h3>
+						<p>Postal Staff</p>
+					</span>
+				</li>
+				<li>
+                <i class='bx bxs-building-house'></i>
+					<span class="text">
+						<h3><?php echo $subPostOfficeCount['count']; ?></h3>
+						<p>Postmen</p>
+					</span>
+				</li>
+                <li>
+                <i class='bx bxs-home'></i>
+					<span class="text">
+						<h3><?php echo $agencyPostOfficeCount['count']; ?></h3>
+						<p>Agency Postoffices</p>
+					</span>
+				</li>
+				<li>
+                <i class='bx bxs-tree'></i>
+					<span class="text">
+						<h3>6</h3>
+						<p>Services</p>
+					</span>
+				</li>
+        </ul>
+    <?php elseif ($_SESSION['type'] == 3): ?>            
+			
+    <?php endif; ?>
+<?php endif; ?>
+				
+			
             
-
-<div class="table-data-container">
+<?php if (isset($_SESSION['type'])): ?>
+    <?php if ($_SESSION['type'] == 1): ?>
+      <div class="table-data-container">
   <div class="table-data">
     <div class="order">
       <div class="head">
@@ -154,59 +195,44 @@ while ($row = mysqli_fetch_assoc($retrievePostOffice)):
 <div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>All the Branches</h3>
+						<h3>Recently Added Agencies</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th>Agency</th>
+								<th>City</th>
+								<th>Contact</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+          <?php  if ($agencyResultA && mysqli_num_rows($agencyResultA) > 0) {
+    // Loop through the agencies and print the details
+    while ($agencyRowA = mysqli_fetch_assoc($agencyResultA)) {
+        $agencyId = $agencyRowA['agency_shortcode'];
+        $agencyName = $agencyRowA['agency_name'];
+        $agencyCity = $agencyRowA['city'];
+        $agencyContact = $agencyRowA['contact'];
+
+        echo '<tr>
+        <td>
+          <p>'.$agencyId.' - '.$agencyName.'</p>
+        </td>
+        <td>'.$agencyCity.'</td>
+        <td>'.$agencyContact.'</td>
+      </tr>';
+        // Print the agency details
+      
+    }
+} else {
+    // No agencies found
+    echo "No agencies found.";
+} ?>
+							
+							
+							
 						</tbody>
 					</table>
 				</div>
@@ -278,6 +304,14 @@ if (mysqli_num_rows($postOfficeDropdown) > 0) {
     </div>
 				
 			</div>
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        
+			
+                
+			
+    <?php endif; ?>
+<?php endif; ?>
+
 
 
 		</main>

@@ -26,23 +26,15 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-    <?php if (isset($_SESSION['type'])): ?>
+			<?php if (isset($_SESSION['type'])): ?>
     <?php if ($_SESSION['type'] == 1): ?>
-        
-    <?php elseif ($_SESSION['type'] == 2): ?>
-        
-    <?php elseif ($_SESSION['type'] == 3): ?>
-        MEM
-    <?php endif; ?>
-<?php endif; ?>
-
-        <li class="" id="postoffice_management">
+		<li class="" id="postoffice_management">
 			<a href="?page=postoffice_management">
                 <i class='bx bxs-buildings' ></i>
 				<span class="text">Post Office Management</span>
 			</a>
-        </li>   
-        <li class="" id="user_management">
+        </li> 
+		<li class="" id="user_management">
 				<a href="?page=user_management">
                     <i class='bx bxs-user-detail' ></i>
 					<span class="text">User Management</span>
@@ -55,40 +47,92 @@
 					<span class="text">Packages</span>
 				</a>
 			</li> 
-        
-            <li class="" id="add_packages">
-				<a href="?page=add_packages">
-                    <i class='bx bxs-package' ></i>
-					<span class="text">Add a Packages</span>
-				</a>
-			</li>
-            
-            <li class="" id="track">
+			<li class="" id="track">
 				<a href="?page=track">
                 <i class='bx bx-qr-scan' ></i>
 					<span class="text">Track a Package</span>
 				</a>
 			</li>
-			<li class="" id="postage">
-				<a href="?page=postage">
-                <i class='bx bxs-envelope' ></i>
-					<span class="text">Postage</span>
-				</a>
-			</li>
-            <li class="" id="services">
+			<li class="" id="services">
 				<a href="?page=services">
                 <i class='bx bx-list-ul' ></i>
 					<span class="text">Services</span>
 				</a>
 			</li>
-		</ul>
-		<ul class="side-menu">
-            <li class="" id="reports">
-				<a href="?page=reports">
-                <i class='bx bxs-report' ></i>
-					<span class="text">Reports</span>
+    <?php elseif ($_SESSION['type'] == 2): ?>
+        <li class="" id="postoffice_management">
+			<a href="?page=postoffice_management">
+                <i class='bx bxs-buildings' ></i>
+				<span class="text">Post Office Management</span>
+			</a>
+        </li> 
+
+		<li class="" id="user_management">
+				<a href="?page=user_management">
+                    <i class='bx bxs-user-detail' ></i>
+					<span class="text">User Management</span>
 				</a>
 			</li>
+            
+			<li class="" id="packages">
+				<a href="?page=packages">
+                    <i class='bx bxs-package' ></i>
+					<span class="text">Packages</span>
+				</a>
+			</li> 
+			
+			<li class="" id="add_packages">
+				<a href="?page=add_packages">
+                    <i class='bx bxs-package' ></i>
+					<span class="text">Add a Packages</span>
+				</a>
+			</li>
+			<li class="" id="track">
+				<a href="?page=track">
+                <i class='bx bx-qr-scan' ></i>
+					<span class="text">Track a Package</span>
+				</a>
+			</li>
+			<li class="" id="services">
+				<a href="?page=services">
+                <i class='bx bx-list-ul' ></i>
+					<span class="text">Services</span>
+				</a>
+			</li>
+			
+			</ul>
+    <?php elseif ($_SESSION['type'] == 3): ?>            
+			<li class="" id="packages">
+				<a href="?page=packages">
+                    <i class='bx bxs-package' ></i>
+					<span class="text">Packages</span>
+				</a>
+			</li> 
+			<li class="" id="add_packages">
+				<a href="?page=add_packages">
+                    <i class='bx bxs-package' ></i>
+					<span class="text">Add a Packages</span>
+				</a>
+			</li>
+			<li class="" id="track">
+				<a href="?page=track">
+                <i class='bx bx-qr-scan' ></i>
+					<span class="text">Track a Package</span>
+				</a>
+			</li>
+			<li class="" id="services">
+				<a href="?page=services">
+                <i class='bx bx-list-ul' ></i>
+					<span class="text">Services</span>
+				</a>
+			</li>
+			
+			</ul>
+    <?php endif; ?>
+<?php endif; ?>
+
+		<ul class="side-menu">
+            
             <li class="" id="analytics">
 				<a href="?page=analytics">
                 <i class='bx bx-stats' ></i>

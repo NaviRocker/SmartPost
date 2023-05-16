@@ -275,4 +275,86 @@ if ($result_current && mysqli_num_rows($result_current) > 0) {
 
 
 
+<?php
+
+if(isset($_POST['add_staff'])){
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $encpass = password_hash($password, PASSWORD_BCRYPT);
+
+    $StaffQuery = "SELECT branch_id FROM admin WHERE email = '$email'";
+    $StaffResult = mysqli_query($con, $StaffQuery);
+
+    if ($StaffResult && mysqli_num_rows($StaffResult) > 0) {
+        $StaffRow = mysqli_fetch_assoc($StaffResult);
+        $branchId = $StaffRow['branch_id'];}
+
+
+        //insert query
+        $insert_adminuser = "INSERT INTO admin (fname, lname, email, password, type, status, code, branch_id) 
+            VALUES ('$fname', '$lname', '$email', '$encpass', '3', 'verified', '0', '$branchId')";
+        $result_query = mysqli_query($con, $insert_adminuser);
+        if ($result_query) {
+            // Display SweetAlert success message
+            echo "<script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                text: 'Added New Postal Staff Successfully!',
+                showConfirmButton: false,
+                timer: 1500
+                
+                }).then(function() {
+                    window.location.replace('success.php'); // Replace with the desired URL
+                });
+            </script>";
+        } else {
+            // Handle error
+            echo 'There was an error inserting the data into the database.';
+        }
+    }
+
+?>
+
+
+<?php
+
+if(isset($_POST['add_postman'])){
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $encpass = password_hash($password, PASSWORD_BCRYPT);
+    $StaffQuery = "SELECT branch_id FROM admin WHERE email = '$email'";
+    $StaffResult = mysqli_query($con, $StaffQuery);
+
+    if ($StaffResult && mysqli_num_rows($StaffResult) > 0) {
+        $StaffRow = mysqli_fetch_assoc($StaffResult);
+        $branchId = $StaffRow['branch_id'];}
+        //insert query
+        $insert_adminpost = "INSERT INTO admin (fname, lname, email, password, type, status, code, branch_id) 
+            VALUES ('$fname', '$lname', '$email', '$encpass', '4', 'verified', '0', '$branchId')";
+        $result_query = mysqli_query($con, $insert_adminpost);
+        if ($result_query) {
+            // Display SweetAlert success message
+            echo "<script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                text: 'Added New Postman Successfully!',
+                showConfirmButton: false,
+                timer: 1500
+                
+                }).then(function() {
+                    window.location.replace('success.php'); // Replace with the desired URL
+                });
+            </script>";
+        } else {
+            // Handle error
+            echo 'There was an error inserting the data into the database.';
+        }
+    }
+?>
 
